@@ -1,30 +1,33 @@
 import random
 
+def play_guessing_game():
+    guesses_made = 0
 
+    # Hardcode the player's name
+    name = "Test Player"
 
-guesses_made = 0
+    # Generate a random number
+    number = random.randint(1, 20)
+    print(f'Well, {name}, I am thinking of a number between 1 and 20.')
 
-name = input('Hello! What is your name?\n')
+    # Hardcoded guesses
+    guesses = [5, 10, 15, 3, 8, 20]  # These can be adjusted to test different scenarios
 
-number = random.randint(1, 20)
-print ('Well, {0}, I am thinking of a number between 1 and 20.'.format(name))
+    for guess in guesses:
+        guesses_made += 1
 
-while guesses_made < 6:
+        print(f'Take a guess: {guess}')  # Outputting the guess for testing transparency
 
-    guess = int(input('Take a guess: '))
+        if guess < number:
+            print('Your guess is too low.')
+        elif guess > number:
+            print('Your guess is too high.')
+        else:
+            print(f'Good job, {name}! You guessed my number in {guesses_made} guesses!')
+            break
 
-    guesses_made += 1
+    if guess != number:
+        print(f'Nope. The number I was thinking of was {number}')
 
-    if guess < number:
-        print ('Your guess is too low.')
-
-    if guess > number:
-        print ('Your guess is too high.')
-
-    if guess == number:
-        break
-
-if guess == number:
-    print ('Good job, {0}! You guessed my number in {1} guesses!'.format(name, guesses_made))
-else:
-    print ('Nope. The number I was thinking of was {0}'.format(number)) 
+if __name__ == "__main__":
+    play_guessing_game()
